@@ -1,5 +1,6 @@
 package com.server.soap.webservices.customersadministration.soap;
 
+import br.com.serversoap.CustomerDetail;
 import br.com.serversoap.GetCustomerDetailRequest;
 import br.com.serversoap.GetCustomerDetailResponse;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -14,6 +15,9 @@ public class CustomerDetailEndPoint {
     @ResponsePayload
     public GetCustomerDetailResponse processCustomerDetailRequest(@RequestPayload GetCustomerDetailRequest req){
         GetCustomerDetailResponse response = new GetCustomerDetailResponse();
+        CustomerDetail customerDetail = new CustomerDetail();
+        customerDetail.setId(1);
+        customerDetail.setName("Bob");
         return response;
     }
 

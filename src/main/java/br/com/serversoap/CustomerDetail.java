@@ -69,13 +69,13 @@ public class CustomerDetail {
 
     /**
      * Define o valor da propriedade id.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link BigInteger }
      *     
      */
-    public void setId(BigInteger value) {
+    public void setId(int value) {
         this.id = value;
     }
 
