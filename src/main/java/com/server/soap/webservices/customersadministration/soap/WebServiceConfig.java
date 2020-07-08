@@ -12,8 +12,8 @@ import javax.servlet.ServletRegistration;
 @EnableWs
 public class WebServiceConfig extends WsConfigurerAdapter {
 
-    public ServletRegistration messageDispatcherServlet(ApplicationContext){
+    public ServletRegistration messageDispatcherServlet(ApplicationContext context){
         MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet();
-
+        messageDispatcherServlet.setApplicationContext(context);
     }
 }
