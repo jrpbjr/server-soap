@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GetCustomerDetailResponse xmlns="http://serversoap.com.br">
+<GetCustomerDetailResponse
+        xmlns="http://serversoap.com.br"
+        xsi:schemaLocation="http://serversoap.com.br customer-information.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <CustomerDetail>
         <id>123</id>
-        <name>Roberto</name>
+        <name>Bob</name>
         <phone>99999999</phone>
-        <email>roberto@gmail.com</email>
+        <email>bob@gmail.com</email>
     </CustomerDetail>
 </GetCustomerDetailResponse>

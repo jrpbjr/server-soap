@@ -1,41 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://serversoap.com.br"
-        xmlns:tns="http://serversoap.com.br"
-        elementFormDefault="qualified">
-    
-    <element name="GetCustomerDetailRequest">
-        <complexType>
-            <sequence>
-                <element name="id" type="integer"></element>
-                <element name="name" type="string"></element>
-                <element name="phone" type="string"></element>
-                <element name="email" type="string"></element>
-            </sequence>
-        </complexType>
-    </element>
-    
-    <complexType name="CustomerDetail">
-        <sequence>
-            <element name="id" type="integer"></element>
-        </sequence>
-    </complexType>
-    
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://serversoap.com.br"
+           xmlns:tns="http://serversoap.com.br"
+           elementFormDefault="qualified">
 
-    <element name="GetCustomerDetailResponse">
-        <complexType>
-            <sequence>
-                <element name="CustomerDetail" type="tns:CustomerDetail"></element>
-            </sequence>
-        </complexType>
-    </element>
+    <xs:element name="GetCustomerDetailRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
-    <element name="GetAllCustomerDetailResponse">
-        <complexType>
-            <sequence>
-                <element name="CustomerDetail" type="tns:CustomerDetail"></element>
-            </sequence>
-        </complexType>
-    </element>
+    <xs:element name="GetCustomerDetailResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="CustomerDetail" type="tns:CustomerDetail"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
-</schema>
+    <xs:element name="GetAllCustomerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="CustomerDetail" type="tns:CustomerDetail"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="CustomerDetail">
+        <xs:sequence>
+            <xs:element name="id" type="xs:integer"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
