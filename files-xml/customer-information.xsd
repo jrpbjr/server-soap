@@ -3,5 +3,13 @@
         targetNamespace="http://serversoap.com.br"
         xmlns:tns="http://serversoap.com.br"
         elementFormDefault="qualified">
+    
+    <element name="GetCustomerDetailRequest">
+        <complexType>
+            <sequence>
+                <element name="id" type="integer"></element>
+            </sequence>
+        </complexType>
+    </element>
 
 </schema>
