@@ -75,7 +75,7 @@ public class CustomerDetail {
      *     {@link BigInteger }
      *     
      */
-    public void setId(int value) {
+    public void setId(BigInteger value) {
         this.id = value;
     }
 
