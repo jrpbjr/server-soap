@@ -15,5 +15,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     public ServletRegistration messageDispatcherServlet(ApplicationContext context){
         MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet();
         messageDispatcherServlet.setApplicationContext(context);
+        messageDispatcherServlet.setTransformWsdlLocations(true);
     }
 }
