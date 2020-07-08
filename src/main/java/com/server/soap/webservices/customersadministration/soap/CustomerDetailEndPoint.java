@@ -5,11 +5,13 @@ import br.com.serversoap.GetCustomerDetailResponse;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
 public class CustomerDetailEndPoint {
 
     @PayloadRoot(namespace = "http://serversoap.com.br", localPart = "GetCustomerDetailRequest")
+    @ResponsePayload
     public GetCustomerDetailResponse processCustomerDetailRequest(@RequestPayload GetCustomerDetailRequest req){
         GetCustomerDetailResponse response = new GetCustomerDetailResponse();
         return response;
