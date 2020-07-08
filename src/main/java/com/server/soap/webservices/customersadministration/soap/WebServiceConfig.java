@@ -32,7 +32,8 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     @Bean(name = "customers")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema customerSchema){
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
-
+        definition.setPortTypeName("CustomerPort");
+        definition.setTargetNamespace("http://serversoap.com.br");
         return definition;
     }
 }
