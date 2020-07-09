@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
@@ -25,7 +26,14 @@ public class CustomerDetailService {
         customers.add(customer4);
 
 
+    }
 
+    public Customer findById(Integer id){
+        Optional <Customer> customerOptional = customers.stream().filter(c -> c.getId() == id).findAny();
+        if(customerOptional.isPresent()){
+            return customerOptional.get();
+        }
+        return null;
     }
 
 }
