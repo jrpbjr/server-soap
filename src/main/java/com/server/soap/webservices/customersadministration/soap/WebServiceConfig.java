@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
+import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
@@ -38,4 +39,11 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         definition.setSchema(customerSchema);
         return definition;
     }
+
+    @Bean
+    public XwsSecurityInterceptor securityInterceptor(){
+        XwsSecurityInterceptor securityInterceptor = new XwsSecurityInterceptor();
+        return securityInterceptor;
+    }
+
 }
