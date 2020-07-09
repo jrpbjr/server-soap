@@ -3,6 +3,8 @@ package com.server.soap.webservices.customersadministration.soap;
 import br.com.serversoap.CustomerDetail;
 import br.com.serversoap.GetCustomerDetailRequest;
 import br.com.serversoap.GetCustomerDetailResponse;
+import com.server.soap.webservices.customersadministration.service.CustomerDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -12,6 +14,9 @@ import java.math.BigInteger;
 
 @Endpoint
 public class CustomerDetailEndPoint {
+
+    @Autowired
+    CustomerDetailService service;
 
     @PayloadRoot(namespace = "http://serversoap.com.br", localPart = "GetCustomerDetailRequest")
     @ResponsePayload
