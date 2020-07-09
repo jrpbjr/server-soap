@@ -6,3 +6,21 @@ WS-Security
 XWSS - XML and Service Security
 Security Policy
 XwsSecurityInterceptor
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://serversoap.com.br">
+   <soapenv:Header>
+   	<wsse:Security
+   		xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+   		mustUnderstand="1">
+   		<wsse:UsernameToken>
+   			<wsse:Username>jose</wsse:Username>
+   			<wsse:Password>jo123</wsse:Password>
+   		</wsse:UsernameToken>
+   	</wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ser:GetCustomerDetailRequest>
+         <ser:id>1</ser:id>
+      </ser:GetCustomerDetailRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
