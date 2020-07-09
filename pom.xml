@@ -74,6 +74,11 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>javax.activation-api</artifactId>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
