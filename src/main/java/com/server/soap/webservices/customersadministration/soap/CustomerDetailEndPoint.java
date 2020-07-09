@@ -68,7 +68,7 @@ public class CustomerDetailEndPoint {
     @ResponsePayload
     public DeleteCustomerResponse deleteCustomerRequest(@RequestPayload DeleteCustomerRequest req){
         DeleteCustomerResponse resp = new DeleteCustomerResponse();
-        resp.setStatus(convertStatusSoap(service.deleteById(req.getId())));
+        resp.setStatus(convertStatusSoap(service.deleteById(BigInteger.valueOf(req.getId().intValue()))));
         return resp;
     }
 
