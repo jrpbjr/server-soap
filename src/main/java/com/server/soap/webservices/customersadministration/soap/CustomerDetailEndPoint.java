@@ -2,6 +2,7 @@ package com.server.soap.webservices.customersadministration.soap;
 
 import br.com.serversoap.*;
 import com.server.soap.webservices.customersadministration.bean.Customer;
+import com.server.soap.webservices.customersadministration.exception.CustomerNotFoundException;
 import com.server.soap.webservices.customersadministration.service.CustomerDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -29,7 +30,7 @@ public class CustomerDetailEndPoint {
         customerDetail.setEmail("bob@gmail.com.br");*/
         Customer customer = service.findById(BigInteger.valueOf(req.getId().intValue()));
         if(customer == null){
-            throw new Exception("Invalid Customer id " + req.getId());
+            throw new CustomerNotFoundException("Invalid Customer id " + req.getId());
         }
 
         //return response;
