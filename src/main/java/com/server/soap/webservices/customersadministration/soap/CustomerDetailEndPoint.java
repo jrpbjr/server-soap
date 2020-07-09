@@ -1,8 +1,6 @@
 package com.server.soap.webservices.customersadministration.soap;
 
-import br.com.serversoap.CustomerDetail;
-import br.com.serversoap.GetCustomerDetailRequest;
-import br.com.serversoap.GetCustomerDetailResponse;
+import br.com.serversoap.*;
 import com.server.soap.webservices.customersadministration.bean.Customer;
 import com.server.soap.webservices.customersadministration.service.CustomerDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import java.math.BigInteger;
+import java.util.List;
 
 @Endpoint
 public class CustomerDetailEndPoint {
@@ -50,6 +48,19 @@ public class CustomerDetailEndPoint {
         customerDetail.setPhone(customer.getPhone());
         customerDetail.setEmail(customer.getEmail());
         return customerDetail;
+    }
+
+    @PayloadRoot(namespace = "http://serversoap.com.br", localPart = "GetAllCustomerDetailRequest")
+    @ResponsePayload
+    public GetAllCustomerDetailResponse processGetAllCustomerDetailResponse(@RequestPayload GetAllCustomerDetailRequest req){
+        List<Customer> customers = service.findAll();
+        return convertToGetAllCustomerDetailResponse(customers);
+    }
+
+    private GetAllCustomerDetailResponse convertToGetAllCustomerDetailResponse(List<Customer> customers){
+        GetAllCustomerDetailResponse resp = new GetAllCustomerDetailResponse();
+        customers.stream().forEach(c -> resp.getCustomerDetail().add(convertToCustomerDetail(c)));
+        return resp;
     }
 
 }
