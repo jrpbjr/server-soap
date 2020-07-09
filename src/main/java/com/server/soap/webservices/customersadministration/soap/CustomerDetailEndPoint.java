@@ -63,6 +63,14 @@ public class CustomerDetailEndPoint {
         return resp;
     }
 
+    @PayloadRoot(namespace = "http://serversoap.com.br", localPart = "DeleteCustomerRequest")
+    @ResponsePayload
+    public DeleteCustomerResponse deleteCustomerRequest(@RequestPayload DeleteCustomerRequest req){
+        DeleteCustomerResponse resp = new DeleteCustomerResponse();
+        resp.setStatus(convertStatusSoap(service.deleteById(req.getId())));
+        return resp;
+    }
+
     private br.com.serversoap.Status convertStatusSoap(
             com.server.soap.webservices.customersadministration.helper.Status statusService){
         if(statusService == com.server.soap.webservices.customersadministration.helper.Status.FAILURE){
