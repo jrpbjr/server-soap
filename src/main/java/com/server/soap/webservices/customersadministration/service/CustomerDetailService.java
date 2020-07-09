@@ -1,6 +1,7 @@
 package com.server.soap.webservices.customersadministration.service;
 
 import com.server.soap.webservices.customersadministration.bean.Customer;
+import com.server.soap.webservices.customersadministration.helper.Status;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -40,6 +41,13 @@ public class CustomerDetailService {
         return customers;
     }
 
-
+    public Status deleteById(Integer id){
+      Optional <Customer> customerOptional = customers.stream().filter(c -> c.getId() == id).findAny();
+      if(customerOptional.isPresent()){
+          customers.remove(customerOptional.get());
+          return Status.SUCCESS;
+      }
+      return Status.FAILURE;
+    }
 
 }
