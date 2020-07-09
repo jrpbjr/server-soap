@@ -21,14 +21,20 @@ public class CustomerDetailEndPoint {
 
     @PayloadRoot(namespace = "http://serversoap.com.br", localPart = "GetCustomerDetailRequest")
     @ResponsePayload
-    public GetCustomerDetailResponse processCustomerDetailRequest(@RequestPayload GetCustomerDetailRequest req){
-        GetCustomerDetailResponse response = new GetCustomerDetailResponse();
+    public GetCustomerDetailResponse processCustomerDetailRequest(@RequestPayload GetCustomerDetailRequest req) throws Exception {
+       /* GetCustomerDetailResponse response = new GetCustomerDetailResponse();
         CustomerDetail customerDetail = new CustomerDetail();
         customerDetail.setId(BigInteger.valueOf(1));
         customerDetail.setName("Bob");
         customerDetail.setPhone("99999999");
-        customerDetail.setEmail("bob@gmail.com.br");
-        return response;
+        customerDetail.setEmail("bob@gmail.com.br");*/
+        Customer customer = service.findById(req.getId());
+        if(customer == null){
+            throw new Exception("Invalid Customer id" + req.getId());
+        }
+
+        //return response;
+        return convertToCustomerDetailResponse(customer);
     }
 
     private GetCustomerDetailResponse convertToCustomerDetailResponse(Customer customer){
