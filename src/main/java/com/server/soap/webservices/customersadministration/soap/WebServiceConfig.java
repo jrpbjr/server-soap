@@ -46,6 +46,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     @Bean
     public XwsSecurityInterceptor securityInterceptor(){
         XwsSecurityInterceptor securityInterceptor = new XwsSecurityInterceptor();
+        securityInterceptor.setCallbackHandler(callbackHandler());
         return securityInterceptor;
     }
 
