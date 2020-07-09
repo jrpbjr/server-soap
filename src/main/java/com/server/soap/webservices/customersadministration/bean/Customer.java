@@ -1,23 +1,25 @@
 package com.server.soap.webservices.customersadministration.bean;
 
+import java.math.BigInteger;
+
 public class Customer {
-    private Integer id;
+    private BigInteger id;
     private String name;
     private String phone;
     private String email;
 
-    public Customer(Integer id, String name, String phone, String email) {
+    public Customer(BigInteger id, String name, String phone, String email) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

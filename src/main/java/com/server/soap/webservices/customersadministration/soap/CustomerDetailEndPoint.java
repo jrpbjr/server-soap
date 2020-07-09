@@ -3,6 +3,7 @@ package com.server.soap.webservices.customersadministration.soap;
 import br.com.serversoap.CustomerDetail;
 import br.com.serversoap.GetCustomerDetailRequest;
 import br.com.serversoap.GetCustomerDetailResponse;
+import com.server.soap.webservices.customersadministration.bean.Customer;
 import com.server.soap.webservices.customersadministration.service.CustomerDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -28,6 +29,21 @@ public class CustomerDetailEndPoint {
         customerDetail.setPhone("99999999");
         customerDetail.setEmail("bob@gmail.com.br");
         return response;
+    }
+
+    private GetCustomerDetailResponse convertToCustomerDetailResponse(Customer customer){
+        GetCustomerDetailResponse resp = new GetCustomerDetailResponse();
+        resp.setCustomerDetail(convertToCustomerDetail(customer));
+        return resp;
+    }
+
+    private CustomerDetail convertToCustomerDetail(Customer customer){
+        CustomerDetail customerDetail = new CustomerDetail();
+        customerDetail.setId(customer.getId());
+        customerDetail.setName(customer.getName());
+        customerDetail.setPhone(customer.getPhone());
+        customerDetail.setEmail(customer.getEmail());
+        return customerDetail;
     }
 
 }
