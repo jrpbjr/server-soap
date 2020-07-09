@@ -9,6 +9,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Endpoint
@@ -26,9 +27,9 @@ public class CustomerDetailEndPoint {
         customerDetail.setName("Bob");
         customerDetail.setPhone("99999999");
         customerDetail.setEmail("bob@gmail.com.br");*/
-        Customer customer = service.findById(req.getId());
+        Customer customer = service.findById(BigInteger.valueOf(req.getId().intValue()));
         if(customer == null){
-            throw new Exception("Invalid Customer id" + req.getId());
+            throw new Exception("Invalid Customer id " + req.getId());
         }
 
         //return response;
