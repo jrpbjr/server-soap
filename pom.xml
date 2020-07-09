@@ -19,21 +19,6 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>spring-releases</id>
-			<name>Spring Releases</name>
-			<url>https://repo.spring.io/libs-release</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-releases</id>
-			<name>Spring Releases</name>
-			<url>https://repo.spring.io/libs-release</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -77,18 +62,6 @@
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-security</artifactId>
-				<exclusions>
-					<exclusion>
-						<groupId>org.springframework.securty</groupId>
-						<artifactId>spring-security-core</artifactId>
-					</exclusion>
-				</exclusions>
-		</dependency>
-
 
 	</dependencies>
 	<build>
