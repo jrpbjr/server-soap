@@ -47,6 +47,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     public XwsSecurityInterceptor securityInterceptor(){
         XwsSecurityInterceptor securityInterceptor = new XwsSecurityInterceptor();
         securityInterceptor.setCallbackHandler(callbackHandler());
+        securityInterceptor.setPolicyConfiguration(new ClassPathResource("securityPolicy.xml"));
         return securityInterceptor;
     }
 
