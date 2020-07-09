@@ -36,4 +36,8 @@ public class CustomerDetailService {
         return null;
     }
 
+    public List<Customer> findAll(){
+        return customers;
+    }
+
 }
