@@ -63,4 +63,12 @@ public class CustomerDetailEndPoint {
         return resp;
     }
 
+    private br.com.serversoap.Status convertStatusSoap(
+            com.server.soap.webservices.customersadministration.helper.Status statusService){
+        if(statusService == com.server.soap.webservices.customersadministration.helper.Status.FAILURE){
+            return Status.FAILURE;
+        }
+        return Status.SUCCESS;
+    }
+
 }
