@@ -39,7 +39,14 @@ public class CustomerDetailService {
     private CustomerRepository customerRepository;
 
     public Customer findById(BigInteger id){
+        /*
         Optional <Customer> customerOptional = customers.stream().filter(c -> c.getId() == id).findAny();
+        if(customerOptional.isPresent()){
+            return customerOptional.get();
+        }
+        return null;
+         */
+        Optional<Customer> customerOptional = customerRepository.findById(id);
         if(customerOptional.isPresent()){
             return customerOptional.get();
         }
@@ -47,21 +54,39 @@ public class CustomerDetailService {
     }
 
     public List<Customer> findAll(){
-        return customers;
+        //return customers;
+        return customerRepository.findAll();
     }
 
     public Status deleteById(BigInteger id){
+       /*
       Optional <Customer> customerOptional = customers.stream().filter(c -> c.getId() == id).findAny();
       if(customerOptional.isPresent()){
           customers.remove(customerOptional.get());
           return Status.SUCCESS;
       }
       return Status.FAILURE;
+        */
+        try{
+            customerRepository.deleteById(id);
+            return Status.SUCCESS;
+        }catch (Exception ex){
+            return Status.FAILURE;
+        }
+
     }
 
     public Status insert(Customer customer){
+        /*
         customers.add(customer);
         return Status.SUCCESS;
+        */
+        try{
+            customerRepository.save(customer);
+            return Status.SUCCESS;
+        }catch(Exception ex){
+            return Status.FAILURE;
+        }
     }
 
 
