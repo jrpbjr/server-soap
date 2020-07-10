@@ -16,6 +16,9 @@ public class Customer {
     private String phone;
     private String email;
 
+    public Customer() {
+    }
+
     public Customer(BigInteger id, String name, String phone, String email) {
         this.id = id;
         this.name = name;
