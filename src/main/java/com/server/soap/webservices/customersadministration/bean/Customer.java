@@ -1,7 +1,9 @@
 package com.server.soap.webservices.customersadministration.bean;
 
+import javax.persistence.Entity;
 import java.math.BigInteger;
 
+@Entity
 public class Customer {
     private BigInteger id;
     private String name;
