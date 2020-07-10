@@ -4,7 +4,7 @@
            xmlns:tns="http://serversoap.com.br"
            elementFormDefault="qualified">
 
-    <xs:element name="InsertCustomerDetailRequest">
+    <xs:element name="InsertCustomerRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="CustomerDetail" type="tns:CustomerDetail"/>
