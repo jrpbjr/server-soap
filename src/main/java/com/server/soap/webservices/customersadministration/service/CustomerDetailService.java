@@ -2,6 +2,8 @@ package com.server.soap.webservices.customersadministration.service;
 
 import com.server.soap.webservices.customersadministration.bean.Customer;
 import com.server.soap.webservices.customersadministration.helper.Status;
+import com.server.soap.webservices.customersadministration.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
@@ -32,6 +34,10 @@ public class CustomerDetailService {
 
     }
     */
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
     public Customer findById(BigInteger id){
         Optional <Customer> customerOptional = customers.stream().filter(c -> c.getId() == id).findAny();
         if(customerOptional.isPresent()){
