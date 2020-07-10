@@ -45,7 +45,7 @@ public class CustomerDetailEndPoint {
 
     private CustomerDetail convertToCustomerDetail(Customer customer){
         CustomerDetail customerDetail = new CustomerDetail();
-        customerDetail.setId(customer.getId());
+        customerDetail.setId(BigInteger.valueOf(customer.getId()));
         customerDetail.setName(customer.getName());
         customerDetail.setPhone(customer.getPhone());
         customerDetail.setEmail(customer.getEmail());
@@ -90,7 +90,7 @@ public class CustomerDetailEndPoint {
     }
 
     private Customer convertCustomer(CustomerDetail customerDetail){
-        return new Customer(BigInteger.valueOf(customerDetail.getId().intValue())
+        return new Customer(customerDetail.getId().intValue()
                 , customerDetail.getName()
                 , customerDetail.getPhone()
                 , customerDetail.getEmail());
