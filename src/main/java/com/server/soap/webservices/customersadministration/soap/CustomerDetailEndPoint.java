@@ -81,4 +81,19 @@ public class CustomerDetailEndPoint {
         return Status.SUCCESS;
     }
 
+    @PayloadRoot(namespace = "http://serversoap.com.br", localPart = "InsertCustomerRequest")
+    @ResponsePayload
+    public InsertCustomerResponse insertCustomerRequest(@RequestPayload InsertCustomerRequest req){
+        InsertCustomerResponse resp = new InsertCustomerResponse();
+        resp.setStatus(convertStatusSoap(service.insert(convertCustomer(req.getCustomerDetail()))));
+        return resp;
+    }
+
+    private Customer convertCustomer(CustomerDetail customerDetail){
+        return new Customer(customerDetail.getId()
+                , customerDetail.getName()
+                , customerDetail.getPhone()
+                , customerDetail.getEmail());
+    }
+
 }
