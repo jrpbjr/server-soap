@@ -12,7 +12,9 @@ import java.util.Optional;
 
 @Component
 public class CustomerDetailService {
-    private static List<Customer> customers = new ArrayList<>();
+
+    /* private static List<Customer> customers = new ArrayList<>();
+
 
     static{
         Customer customer1 = new Customer(BigInteger.valueOf(1),"Bob", "99999999", "bob@gmail.com");
@@ -29,7 +31,7 @@ public class CustomerDetailService {
 
 
     }
-
+    */
     public Customer findById(BigInteger id){
         Optional <Customer> customerOptional = customers.stream().filter(c -> c.getId() == id).findAny();
         if(customerOptional.isPresent()){
