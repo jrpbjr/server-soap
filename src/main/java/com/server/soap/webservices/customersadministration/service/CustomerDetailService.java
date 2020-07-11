@@ -38,7 +38,7 @@ public class CustomerDetailService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Customer findById(BigInteger id){
+    public Customer findById(Integer id){
         /*
         Optional <Customer> customerOptional = customers.stream().filter(c -> c.getId() == id).findAny();
         if(customerOptional.isPresent()){
@@ -46,7 +46,7 @@ public class CustomerDetailService {
         }
         return null;
          */
-        Optional<Customer> customerOptional = customerRepository.findById(id);
+        Optional<Customer> customerOptional = customerRepository.findById(BigInteger.valueOf(id));
         if(customerOptional.isPresent()){
             return customerOptional.get();
         }
@@ -58,7 +58,7 @@ public class CustomerDetailService {
         return customerRepository.findAll();
     }
 
-    public Status deleteById(BigInteger id){
+    public Status deleteById(Integer id){
        /*
       Optional <Customer> customerOptional = customers.stream().filter(c -> c.getId() == id).findAny();
       if(customerOptional.isPresent()){
@@ -68,7 +68,7 @@ public class CustomerDetailService {
       return Status.FAILURE;
         */
         try{
-            customerRepository.deleteById(id);
+            customerRepository.deleteById(BigInteger.valueOf(id));
             return Status.SUCCESS;
         }catch (Exception ex){
             return Status.FAILURE;

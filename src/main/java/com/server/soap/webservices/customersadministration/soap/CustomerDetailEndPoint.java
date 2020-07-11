@@ -28,7 +28,7 @@ public class CustomerDetailEndPoint {
         customerDetail.setName("Bob");
         customerDetail.setPhone("99999999");
         customerDetail.setEmail("bob@gmail.com.br");*/
-        Customer customer = service.findById(BigInteger.valueOf(req.getId().intValue()));
+        Customer customer = service.findById(Integer.valueOf(req.getId().intValue()));
         if(customer == null){
             throw new CustomerNotFoundException("Invalid Customer id " + req.getId());
         }
@@ -45,7 +45,7 @@ public class CustomerDetailEndPoint {
 
     private CustomerDetail convertToCustomerDetail(Customer customer){
         CustomerDetail customerDetail = new CustomerDetail();
-        customerDetail.setId(BigInteger.valueOf(customer.getId()));
+        customerDetail.setId(customer.getId());
         customerDetail.setName(customer.getName());
         customerDetail.setPhone(customer.getPhone());
         customerDetail.setEmail(customer.getEmail());
@@ -69,7 +69,7 @@ public class CustomerDetailEndPoint {
     @ResponsePayload
     public DeleteCustomerResponse deleteCustomerRequest(@RequestPayload DeleteCustomerRequest req){
         DeleteCustomerResponse resp = new DeleteCustomerResponse();
-        resp.setStatus(convertStatusSoap(service.deleteById(BigInteger.valueOf(req.getId().intValue()))));
+        resp.setStatus(convertStatusSoap(service.deleteById(req.getId().intValue())));
         return resp;
     }
 
@@ -90,7 +90,7 @@ public class CustomerDetailEndPoint {
     }
 
     private Customer convertCustomer(CustomerDetail customerDetail){
-        return new Customer(customerDetail.getId().intValue()
+        return new Customer(BigInteger.valueOf(customerDetail.getId().intValue())
                 , customerDetail.getName()
                 , customerDetail.getPhone()
                 , customerDetail.getEmail());
